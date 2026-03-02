@@ -1,0 +1,183 @@
+{
+	"Add new editable field":{
+		"scope":"java",
+		"prefix":"_ef",
+		"body":[
+			"@EditorEntry(translation=\"$1\")",
+			"public $2;"
+		],
+		"description":"Add a new field with EditorEntry annotation"
+	},
+	"Start application":{
+		"scope":"java",
+		"prefix":"_start",
+		"body":[
+			"Navigator.init();",
+			"ProgramStarter.welcomeMessage=\"$1\";",
+			"ProgramStarter.authRequired=${2|false,true|};",
+			"if(ProgramStarter.firstLaunch){",
+				"\t//Регистрация пользователей",
+				"\t$0",
+				"\t//Декларация групп",
+				"\t",
+				"\tProgramStarter.runProgram();",
+				"\t//Регистрация групп",
+				"\t",
+				"\t//Тестовые данные",
+				"\t",
+			"}else ProgramStarter.runProgram();"
+		],
+		"description":"Fill the `main()` method"
+	},
+	"Create default classes":{
+		"scope":"java",
+		"prefix":"_init",
+		"body":[
+			"public enum AppRole implements Role{",
+				"\t$1(",
+					"\t\t()->new Permission[]{},",
+					"\t\t()->new Feature[]{}",
+				"\t);",
+				"\tprivate AppRole(Supplier<Permission[]>p,Supplier<Feature[]>f){SwingUtilities.invokeLater(()->Registrator.register(this,f.get(),p.get()));}",
+			"}",
+			"public enum AppPermission implements Permission{",
+				"\t$2;",
+				"\tprivate AppPermission(){Registrator.register(this);}",
+			"}"
+		],
+		"description":"Create Role and Permission enum-implementations"
+	},
+	"Define an Editable subclass":{
+		"scope":"java",
+		"prefix":"_editable",
+		"body":[
+			"public class ${TM_FILENAME_BASE} extends Editable{",
+				"\t$0",
+				"\tpublic ${TM_FILENAME_BASE}(){",
+					"\t\tsuper(\"Новый $1\");",
+				"\t}",
+			"}"
+		],
+		"description":"Create a new Editable subclass"
+	},
+	"Register an EditableGroup":{
+		"scope":"java",
+		"prefix":"_group",
+		"body":[
+			"EditableGroup<$1>${2:group}=new EditableGroup<>(",
+				"\tnew PathIcon(\"ui/$3.png\",Root.SCREEN_SIZE.height/11,Root.SCREEN_SIZE.height/11),",
+				"\tnew PathIcon(\"ui/$4.png\",Root.SCREEN_SIZE.height/11,Root.SCREEN_SIZE.height/11),",
+				"\t$1.class",
+			");"
+		],
+		"description":""
+	},
+	"Create a status enum":{
+		"scope":"java",
+		"prefix":"_enum",
+		"body":[
+			"public static enum ${1:Status}{",
+				"\t$0;",
+				"\tprivate String translation;",
+				"\tprivate ${1:Status}(String translation){this.translation=translation;}",
+				"\tpublic String toString(){return translation;}",
+			"}"
+		],
+		"description":""
+	},
+	"Cast editable to the current type":{
+		"scope":"java",
+		"prefix":"_cast",
+		"body":[
+			"${TM_FILENAME_BASE} e=(${TM_FILENAME_BASE})editable;",
+			"$0"
+		],
+		"description":""
+	},
+	"Create editor module":{
+		"scope":"java",
+		"prefix":"_module",
+		"body":[
+			"public class ${TM_FILENAME_BASE} implements EditorModule{",
+				"\tpublic JPanel createTab(JDialog editor,Editable editable,boolean isNew,Runnable deleter){",
+					"\t\tJPanel tab=new JPanel();",
+					"\t\t$0",
+					"\t\treturn tab;",
+				"\t}",
+			"}"
+		],
+		"description":""
+	},
+	"Create feature":{
+		"scope":"java",
+		"prefix":"_feature",
+		"body":[
+			"public class ${TM_FILENAME_BASE} implements Feature{",
+				"\tpublic void fillTab(JPanel content,JPanel tab,Font font){",
+					"\t\t$0",
+				"\t}",
+				"\tpublic void paint(Graphics2D g2,BufferedImage image,int h){",
+					"\t\t",
+				"\t}",
+			"}"
+		],
+		"description":""
+	},
+	"Add read and create permissions":{
+		"scope":"java",
+		"prefix":"_permissions",
+		"body":[
+			"READ_$1,",
+			"CREATE_$1,",
+			"$0"
+		],
+		"description":""
+	},
+	"Complete the current @EditorEntry-ed field with the Function type":{
+		"scope":"java",
+		"prefix":"_function",
+		"body":[
+			"static Function<${TM_FILENAME_BASE},${1:String}>${2:function}=e->$0",
+		],
+		"description":""
+	},
+	"Create Verifier nested subclass":{
+		"scope":"java",
+		"prefix":"_verifier",
+		"body":[
+			"public static class Verifier implements com.bpa4j.editor.Verifier{",
+				"\tpublic String verify(Editable original,Editable editable,boolean isNew){",
+					"\t\t$0",
+				"\t}",
+			"}"
+		],
+		"description":""
+	},
+	"Create BLFeatureManager subclass":{
+		"scope":"java",
+		"prefix":"_blf",
+		"body":[
+			"public class ${TM_FILENAME_BASE} extends BLFeatureManager<$1>{",
+				"\tpublic static final ${TM_FILENAME_BASE} instance=new ${TM_FILENAME_BASE}();",
+				"\tpublic $1 register(){",
+					"\t\t$1 f=$2.register$0;",
+					"\t\treturn f;",
+				"\t}",
+			"}"
+		],
+		"description":""
+	},
+	"Create Completer nested subclass":{
+		"scope":"java",
+		"prefix":"_completer",
+		"body":[
+			"public static class Completer implements com.bpa4j.editor.Completer{",
+				"\tpublic boolean isCompletable(Editable editable,int fieldsEdited){",
+					"\t\t${1:return true;}",
+				"\t}",
+				"\tpublic void completeObject(Editable editable){$0}",
+			"}"
+		],
+		"description":""
+	}
+}

@@ -7,4 +7,8 @@ public class Space extends Editable{
 	public Space(){
 		super("Нов Пространство");
 	}
+	@EditorEntry(translation="Описание")
+	public String description;
+	@EditorEntry(translation="Вместимость")
+	public int capacity;
 }

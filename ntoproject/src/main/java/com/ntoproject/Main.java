@@ -37,7 +37,7 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        new ProjectGraph(new File("C:\\Users\\user\\Desktop\\IT\\Java\\1C\\NTO training\\team\\T3\\ntoproject\\src\\main\\java")).show();
+        // new ProjectGraph(new File("C:\\Users\\user\\Desktop\\IT\\Java\\1C\\NTO training\\team\\T3\\ntoproject\\src\\main\\java")).show();
         // new ProjectGraph(new File("C:\\Users\\ice_d\\Desktop\\Моё\\Програмирование\\NTO training\\T3\\ntoproject\\src\\main\\java")).show();
         Navigator.init();
         ProgramStarter.welcomeMessage="Добро пожаловать в центр \"ЗИЛ\", уважаемые эксперты!";

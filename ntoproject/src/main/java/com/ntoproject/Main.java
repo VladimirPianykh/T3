@@ -13,28 +13,29 @@ import com.bpa4j.core.User.Permission;
 import com.bpa4j.core.User.Role;
 import com.bpa4j.util.codegen.ProjectGraph;
 
-enum AppRole implements Role{
-    ENTERTAINMENT(
-        ()->new Permission[]{},
-        ()->new Feature[]{}
-    ),
-    CULTURE(
-        ()->new Permission[]{},
-        ()->new Feature[]{}
-    ),
-    EDUCATION(
-        ()->new Permission[]{},
-        ()->new Feature[]{}
-    ),;
-    private AppRole(Supplier<Permission[]>p,Supplier<Feature[]>f){
-        SwingUtilities.invokeLater(()->Registrator.register(this,f.get(),p.get()));
-    }
-}
-enum AppPermission implements Permission{
-    ;
-    private AppPermission(){Registrator.register(this);}
-}
 public class Main {
+    public enum AppRole implements Role{
+        ENTERTAINMENT(
+            ()->new Permission[]{},
+            ()->new Feature[]{}
+        ),
+        CULTURE(
+            ()->new Permission[]{},
+            ()->new Feature[]{}
+        ),
+        EDUCATION(
+            ()->new Permission[]{},
+            ()->new Feature[]{}
+        ),;
+        private AppRole(Supplier<Permission[]>p,Supplier<Feature[]>f){
+            SwingUtilities.invokeLater(()->Registrator.register(this,f.get(),p.get()));
+        }
+    }
+    public enum AppPermission implements Permission{
+        ;
+        private AppPermission(){Registrator.register(this);}
+    }
+
     public static void main(String[] args) {
         new ProjectGraph(new File("C:\\Users\\user\\Desktop\\IT\\Java\\1C\\NTO training\\team\\T3\\ntoproject\\src\\main\\java")).show();
         // new ProjectGraph(new File("C:\\Users\\ice_d\\Desktop\\Моё\\Програмирование\\NTO training\\T3\\ntoproject\\src\\main\\java")).show();

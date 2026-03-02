@@ -16,7 +16,7 @@
         <dependency>
             <groupId>io.github.vladimirpianykh</groupId>
             <artifactId>bpa4j</artifactId>
-            <version>1.0.20</version>
+            <version>1.0.19</version>
         </dependency>
     </dependencies>
 </project>

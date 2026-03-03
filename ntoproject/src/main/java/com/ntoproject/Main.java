@@ -32,17 +32,25 @@ public class Main {
         }
     }
     public enum AppPermission implements Permission{
+        READ_EXPOSITION,
+        CREATE_EXPOSITION,
+        READ_SPACE,
+        CREATE_SPACE,
+        READ_STUDIO,
+        CREATE_STUDIO,
+        READ_TEACHER,
+        CREATE_TEACHER,
         ;
         private AppPermission(){Registrator.register(this);}
     }
 
     public static void main(String[] args) {
         // new ProjectGraph(new File("C:\\Users\\user\\Desktop\\IT\\Java\\1C\\NTO training\\team\\T3\\ntoproject\\src\\main\\java")).show();
-        // new ProjectGraph(new File("C:\\Users\\ice_d\\Desktop\\Моё\\Програмирование\\NTO training\\T3\\ntoproject\\src\\main\\java")).show();
+        new ProjectGraph(new File("C:\\Users\\ice_d\\Desktop\\Моё\\Програмирование\\NTO training\\T3\\ntoproject\\src\\main\\java")).show();
         Navigator.init();
         ProgramStarter.welcomeMessage="Добро пожаловать в центр \"ЗИЛ\", уважаемые эксперты!";
         ProgramStarter.authRequired=false;
-        if(ProgramStarter.firstLaunch){
+        if(ProgramStarter.isFirstLaunch()){
             //Регистрация пользователей
             
             //Декларация групп

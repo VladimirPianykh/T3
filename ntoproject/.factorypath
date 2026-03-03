@@ -1,5 +1,6 @@
 <factorypath>
     <factorypathentry kind="VARJAR" id="M2_REPO/io/github/vladimirpianykh/bpa4j/1.0.19/bpa4j-1.0.19.jar" enabled="true" runInBatchMode="false"/>
+    <factorypathentry kind="VARJAR" id="M2_REPO/com/formdev/flatlaf/3.5.4/flatlaf-3.5.4.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/projectlombok/lombok/1.18.36/lombok-1.18.36.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/pdfbox/pdfbox/3.0.3/pdfbox-3.0.3.jar" enabled="true" runInBatchMode="false"/>
     <factorypathentry kind="VARJAR" id="M2_REPO/org/apache/pdfbox/fontbox/3.0.3/fontbox-3.0.3.jar" enabled="true" runInBatchMode="false"/>

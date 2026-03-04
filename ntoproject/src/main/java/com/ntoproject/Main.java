@@ -5,7 +5,6 @@ import java.util.function.Supplier;
 import javax.swing.SwingUtilities;
 
 import com.bpa4j.core.Data.EditableGroup;
-import com.bpa4j.core.Navigator;
 import com.bpa4j.core.ProgramStarter;
 import com.bpa4j.core.Registrator;
 import com.bpa4j.core.Root;
@@ -15,15 +14,17 @@ import com.bpa4j.core.User.Permission;
 import com.bpa4j.core.User.Role;
 import com.bpa4j.defaults.features.DefaultFeature;
 import com.bpa4j.ui.PathIcon;
+import com.ntoproject.editables.registered.Events;
 import com.ntoproject.editables.registered.Exposition;
 import com.ntoproject.editables.registered.Space;
 import com.ntoproject.editables.registered.Studio;
 import com.ntoproject.editables.registered.Teacher;
+import com.ntoproject.editables.registered.TypeOfEvents;
 
 public class Main {
     public enum AppRole implements Role{
         ENTERTAINMENT(
-            ()->new Permission[]{AppPermission.CREATE_SPACE,AppPermission.READ_SPACE},
+            ()->new Permission[]{AppPermission.CREATE_SPACE,AppPermission.READ_SPACE, AppPermission.CREATE_EVENTS,AppPermission.READ_EVENTS, AppPermission.CREATE_TYPEOFEVENTS,AppPermission.READ_TYPEOFEVENTS},
             ()->new Feature[]{
                 DefaultFeature.MODEL_EDITING
             }
@@ -53,6 +54,10 @@ public class Main {
         CREATE_STUDIO,
         READ_TEACHER,
         CREATE_TEACHER,
+        READ_EVENTS,
+        CREATE_EVENTS,
+        READ_TYPEOFEVENTS,
+        CREATE_TYPEOFEVENTS
         ;
         private AppPermission(){Registrator.register(this);}
     }
@@ -89,9 +94,20 @@ public class Main {
                 new PathIcon("ui/worker_add.png",Root.SCREEN_SIZE.height/11,Root.SCREEN_SIZE.height/11),
                 Teacher.class
             );
+            EditableGroup<Events>events=new EditableGroup<>(
+                new PathIcon("ui/factory.png",Root.SCREEN_SIZE.height/11,Root.SCREEN_SIZE.height/11),
+                new PathIcon("ui/factory.png",Root.SCREEN_SIZE.height/11,Root.SCREEN_SIZE.height/11),
+                Events.class
+            );
+            EditableGroup<TypeOfEvents>typeOfEvents=new EditableGroup<>(
+                new PathIcon("ui/order.png",Root.SCREEN_SIZE.height/11,Root.SCREEN_SIZE.height/11),
+                new PathIcon("ui/order_add.png",Root.SCREEN_SIZE.height/11,Root.SCREEN_SIZE.height/11),
+                TypeOfEvents.class
+            );            
+
             ProgramStarter.runProgram();
             //Регистрация групп
-            Registrator.register(expositions,spaces,studios,teachers);
+            Registrator.register(expositions,spaces,studios,teachers, events, typeOfEvents);
             //Тестовые данные
             //FIXME: fill test data
         }else ProgramStarter.runProgram();

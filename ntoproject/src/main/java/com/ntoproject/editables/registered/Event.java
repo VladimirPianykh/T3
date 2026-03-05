@@ -5,15 +5,18 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import com.bpa4j.core.Data.Editable;
+import com.bpa4j.core.Data.EditableGroup;
 import com.bpa4j.editor.EditorEntry;
+import com.bpa4j.editor.Input;
 import com.ntoproject.editables.auxil.PriceObject;
 
+@Input(verifier = Event.Verifier.class)
 public class Event extends Editable{
 	public static class Verifier implements com.bpa4j.editor.Verifier{
 		public String verify(Editable original,Editable editable,boolean isNew){
 			Event e=(Event)editable;
-			if(e.visitors>e.space.capacity)return "Слишком маленькое пространство!";
-			return ""; //Ok
+			if(e.visitors>e.space.capacity)return "Посетителей слишком много";
+			return "";
 		}
 	}
 	public Event(){

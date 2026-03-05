@@ -15,6 +15,7 @@ import com.bpa4j.core.User.Role;
 import com.bpa4j.defaults.features.DefaultFeature;
 import com.bpa4j.navigation.Navigator;
 import com.bpa4j.ui.PathIcon;
+import com.bpa4j.util.testgen.TestGen;
 import com.ntoproject.editables.registered.Event;
 import com.ntoproject.editables.registered.Exposition;
 import com.ntoproject.editables.registered.Space;
@@ -110,7 +111,14 @@ public class Main {
 			//Регистрация групп
 			Registrator.register(expositions,spaces,studios,teachers, events, eventTypes);
 			//Тестовые данные
-			//FIXME: fill test data
+			Space bigHall=new Space();
+			bigHall.name="Большой зал";
+			spaces.add(bigHall);
+			int[]i={0};
+			Supplier<String>names=()->new String[]{"Концерт", "Спектакль", "Лекция", "Выставка"}[i[0]++];
+			TestGen.gen(EventType.class)
+				.withName(names)
+				.to(eventTypes,4);
 		}else ProgramStarter.runProgram();
 	}
 }

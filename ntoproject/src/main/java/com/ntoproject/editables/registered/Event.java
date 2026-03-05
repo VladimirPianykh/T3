@@ -1,11 +1,17 @@
 package com.ntoproject.editables.registered;
 
+import java.awt.FontMetrics;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+
 import com.bpa4j.core.Data.Editable;
-import com.bpa4j.core.Data.EditableGroup;
+import com.bpa4j.core.EditableDemo;
 import com.bpa4j.editor.EditorEntry;
 import com.bpa4j.editor.Input;
 import com.ntoproject.editables.auxil.PriceObject;
@@ -16,6 +22,9 @@ public class Event extends Editable{
 		public String verify(Editable original,Editable editable,boolean isNew){
 			Event e=(Event)editable;
 			if(e.visitors>e.space.capacity)return "Посетителей слишком много";
+			Event eOrg=((Event)original);
+			for(int i=0;i<e.space.capacity;++i)
+				eOrg.prices.add(new PriceObject(eOrg,i+1,1));
 			return "";
 		}
 	}

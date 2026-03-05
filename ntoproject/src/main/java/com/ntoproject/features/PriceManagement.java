@@ -4,7 +4,6 @@ import javax.swing.JOptionPane;
 
 import com.bpa4j.core.BLFeatureManager;
 import com.bpa4j.defaults.features.ItemList;
-import com.bpa4j.defaults.features.ItemList.Filter;
 import com.ntoproject.editables.auxil.PriceObject;
 import com.ntoproject.editables.registered.Event;
 

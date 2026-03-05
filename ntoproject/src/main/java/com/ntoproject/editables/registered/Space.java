@@ -13,9 +13,15 @@ public class Space extends Editable{
 		PARETER("Партер",9,35),
 		AMPHI("Амфитеатр",8,30),
 		BALCON("Балкон",9,40);
-		private String translation;
-		private int rows;
-		private int placesPerRow;
+		private final String translation;
+		private final int rows;
+		private final int placesPerRow;
+		public int getRows() {
+			return rows;
+		}
+		public int getPlacesPerRow() {
+			return placesPerRow;
+		}
 		private Location(String translation,int rows,int placesPerRow){
 			this.translation=translation;
 			this.rows=rows;

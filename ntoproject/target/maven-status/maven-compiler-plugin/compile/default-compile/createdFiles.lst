@@ -2,3 +2,5 @@ com\ntoproject\editables\registered\Teacher.class
 com\ntoproject\editables\registered\Space.class
 com\ntoproject\editables\registered\Exposition.class
 com\ntoproject\editables\registered\Studio.class
+com\ntoproject\editables\registered\Events.class
+com\ntoproject\editables\registered\TypeOfEvents.class
